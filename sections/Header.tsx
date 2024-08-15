@@ -53,7 +53,7 @@ export const Header = () => {
             {headerdata.map((header, index) => {
               return (
                 <Link
-                  className="text-prim text-mobsubheading lg:text-accent tracking-wide hover:bg-white hover:text-black duration-300 rounded-3xl px-3 py-1 font-light"
+                  className="text-prim text-mobsubheading tracking-wide hover:bg-white hover:text-black duration-300 rounded-3xl px-3 py-1 font-light"
                   key={index}
                   href={header.href}
                 >
