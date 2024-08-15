@@ -5,6 +5,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./sections/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontSize: {
@@ -23,14 +24,15 @@ const config: Config = {
       mdheading: "3rem",
       mdsubheading: "1.25rem",
     },
-    letterSpacing: {
-      tight: "-.035em",
+    extend: {
+      colors: {
+        prim: "#DCDCDD",
+        txt: "#000000",
+      },
+      letterSpacing: {
+        tight: "-.035em",
+      },
     },
-    colors: {
-      prim: "#E3E1DE",
-      txt: "#000000",
-    },
-    extend: {},
   },
   plugins: [],
 };
