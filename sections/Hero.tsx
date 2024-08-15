@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { MdWavingHand } from "react-icons/md";
 import { SlGlobe } from "react-icons/sl";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { ArrowRight } from "@/components/icons/ArrowRight";
 
 export const Hero = () => {
   const [typeEffect] = useTypewriter({
@@ -36,12 +37,20 @@ export const Hero = () => {
           </div>
         </div>
         <div className="w-full flex justify-end mt-[5rem] lg:mt-[3.5rem]">
-          <a href="mailto:hello@simondemeulemeester.com">
-            <button>hello@simondemeulemeester.com</button>
-          </a>
+          <button className="group flex gap-2 text-lg items-center border border-black md:py-3 md:px-5 py-2 px-3 rounded-full">
+            <a
+              href="mailto:hello@simondemeulemeester.com"
+              className="font-medium text-mobbody md:text-mobaccent xl:text-accent"
+            >
+              hello@simondemeulemeester.com
+            </a>
+            <div className="group-hover:translate-x-2 duration-300 ease-out">
+              <ArrowRight />
+            </div>
+          </button>
         </div>
         <div className="flex justify-center">
-          <span className="text-mobaccent xl:text-accent uppercase font-medium mt-24 md:mt-4 opacity-80">
+          <span className="text-mobaccent xl:text-accent uppercase mt-24 md:mt-8 opacity-80">
             (scroll)
           </span>
         </div>
