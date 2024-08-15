@@ -21,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <Header />
+        <div className="z-50 relative">
+          <Header />
+        </div>
         {children}
       </body>
     </html>

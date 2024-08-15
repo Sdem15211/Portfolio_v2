@@ -26,7 +26,7 @@ const config: Config = {
     },
     extend: {
       colors: {
-        prim: "#DCDCDD",
+        prim: "#e1e1e1",
         txt: "#000000",
       },
       letterSpacing: {
