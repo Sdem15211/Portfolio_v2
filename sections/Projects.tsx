@@ -1,18 +1,27 @@
 "use client";
 import { Container } from "@/components/layout/Container";
 import { ProjectsScrollElement } from "@/components/ui/ProjectsScrollElement";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
 import { useRef } from "react";
 import { GoNorthStar } from "react-icons/go";
 
 export const Projects = () => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 1440]);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"],
+  });
+
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 540]);
 
   return (
-    <section id="work" className="-z-10 mb-40 scroll-mt-28">
-      <div ref={sectionRef}>
+    <section ref={sectionRef} id="work" className="-z-10 mb-40 scroll-mt-28">
+      <div>
         <Container>
           <div className="flex gap-2 items-center">
             <motion.div style={{ rotate }}>

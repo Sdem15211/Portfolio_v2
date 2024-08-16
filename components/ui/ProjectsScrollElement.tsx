@@ -11,21 +11,55 @@ import { Modal } from "@/components/ui/Modal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ModalState {
+const projects = [
+  {
+    name: ["F", "l", "o", "w"],
+    img1: "Flow2.png",
+    img2: "Flow1.png",
+    img3: "Flow3.png",
+    img4: "Flow4.png",
+    href: "https://energy-website-sooty.vercel.app/",
+    reverse: false,
+  },
+  {
+    name: ["S", "a", "a", "S"],
+    img1: "SAAS3.png",
+    img2: "SAAS2.png",
+    img3: "SAAS1.png",
+    img4: "SAAS4.png",
+    href: "https://saasprojectsimon-self.vercel.app/",
+    reverse: true,
+  },
+  {
+    name: ["K", "r", "e", "a", "t", "i", "v", "y"],
+    img1: "Kreativy3.png",
+    img2: "Kreativy1.png",
+    img3: "Kreativy2.png",
+    img4: "Kreativy4.png",
+    href: "https://saasprojectsimon-self.vercel.app/",
+    reverse: false,
+  },
+  {
+    name: ["K", "r", "e", "a", "t", "i", "v", "y"],
+    img1: "Kreativy3.png",
+    img2: "Kreativy1.png",
+    img3: "Kreativy2.png",
+    img4: "Kreativy4.png",
+    href: "https://saasprojectsimon-self.vercel.app/",
+    reverse: true,
+  },
+];
+
+type ModalState = {
   active: boolean;
   index: number;
-}
+};
 
 export const ProjectsScrollElement: React.FC = () => {
   const [modal, setModal] = useState<ModalState>({ active: false, index: 0 });
   const marqueeContainers = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const titles = document.querySelectorAll<HTMLHeadingElement>(".item h1");
-    titles.forEach((titleElement) => {
-      new SplitType(titleElement, { types: "chars" });
-    });
-
     marqueeContainers.current.forEach((container, index) => {
       if (!container) return;
 
@@ -40,9 +74,7 @@ export const ProjectsScrollElement: React.FC = () => {
       const marquee = container.querySelector<HTMLDivElement>(".marquee");
       if (!marquee) return;
 
-      const words = Array.from(
-        marquee.querySelectorAll<HTMLHeadingElement>(".item h1")
-      );
+      const words = marquee.querySelectorAll<HTMLHeadingElement>(".item h2");
 
       gsap.fromTo(
         marquee,
@@ -66,9 +98,9 @@ export const ProjectsScrollElement: React.FC = () => {
           const reverse = index % 2 !== 0;
           gsap.fromTo(
             chars,
-            { fontWeight: 200 },
+            { fontWeight: 100 },
             {
-              fontWeight: 800,
+              fontWeight: 900,
               duration: 1,
               ease: "none",
               stagger: {
@@ -78,7 +110,7 @@ export const ProjectsScrollElement: React.FC = () => {
               },
               scrollTrigger: {
                 trigger: container,
-                start: "50% 75%",
+                start: "top bottom",
                 end: "top top",
                 scrub: true,
               },
@@ -96,237 +128,82 @@ export const ProjectsScrollElement: React.FC = () => {
   };
 
   return (
-    <section className="w-full lg:h-[150vh] h-[100vh] flex flex-col justify-center overflow-hidden">
-      <Link href="https://energy-website-sooty.vercel.app/" target="_blank">
-        <motion.div
-          className="relative lg:w-[125%] lg:h-[250px] w-[250%] h-[150px] flex mb-5 overflow-hidden -left-[25%]"
-          id="marquee-3"
-          ref={addToRefs}
-          onMouseEnter={() => setModal({ active: true, index: 0 })}
-          onMouseLeave={() => setModal({ active: false, index: 0 })}
-          initial={{ opacity: 0, y: 75 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="w-full h-full absolute top-[50%] left-0 -translate-y-1/2 flex gap-6 marquee items-center">
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow2.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="flex justify-center items-center flex-1 lg:flex-[1.3] item">
-              <h1 className="text-black text-3xl lg:text-work uppercase tracking-tight">
-                {["F", "l", "o", "w"].map((char, index) => (
-                  <span key={index} className="char">
-                    {char}
-                  </span>
-                ))}
-              </h1>
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow1.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow3.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow4.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </Link>
-      <Link href="https://saasprojectsimon-self.vercel.app/" target="_blank">
-        <motion.div
-          className="relative lg:w-[125%] lg:h-[250px] w-[250%] h-[150px] flex mb-5 overflow-hidden -left-[35%] lg:left-0"
-          id="marquee-3"
-          ref={addToRefs}
-          onMouseEnter={() => setModal({ active: true, index: 0 })}
-          onMouseLeave={() => setModal({ active: false, index: 0 })}
-          initial={{ opacity: 0, y: 75 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="w-full h-full absolute top-[50%] left-0 -translate-y-1/2 flex gap-6 marquee items-center">
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/SAAS3.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
+    <section className="w-full lg:h-[150vh] flex flex-col justify-center overflow-hidden">
+      {projects.map((project, index) => (
+        <Link key={index} href={project.href} target="_blank">
+          <motion.div
+            className={`relative w-[125%] h-[250px] flex mb-5 overflow-hidden ${
+              project.reverse ? "left-0" : "-left-[25%]"
+            }`}
+            id="marquee-3"
+            ref={addToRefs}
+            onMouseEnter={() => setModal({ active: true, index: 0 })}
+            onMouseLeave={() => setModal({ active: false, index: 0 })}
+            initial={{ opacity: 0, y: 75 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            transition={{ type: "spring", bounce: 0.5 }}
+          >
+            <div className="w-full h-full absolute top-1/2 left-0 -translate-y-1/2 flex justify-between gap-6 marquee items-center">
+              <div className="relative w-[350px] h-[200px] flex justify-center items-center rounded-lg shrink-0">
+                <Image
+                  src={`/images/${project.img1}`}
+                  fill
+                  alt="image"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              {project.reverse ? null : (
+                <div className="flex justify-center items-center flex-[1.5] shrink-0 item">
+                  <h2 className="text-black lg:text-work uppercase tracking-tight">
+                    {project.name.map((char, index) => (
+                      <span key={index} className="char">
+                        {char}
+                      </span>
+                    ))}
+                  </h2>
+                </div>
+              )}
 
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/SAAS2.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
+              <div className="relative w-[350px] h-[200px] flex justify-center items-center rounded-lg shrink-0">
+                <Image
+                  src={`/images/${project.img2}`}
+                  fill
+                  alt="image"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div className="relative w-[350px] h-[200px] flex justify-center items-center rounded-lg shrink-0">
+                <Image
+                  src={`/images/${project.img3}`}
+                  fill
+                  alt="image"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              {project.reverse ? (
+                <div className="flex justify-center items-center flex-[1.5] shrink-0 item">
+                  <h2 className="text-black lg:text-work uppercase tracking-tight">
+                    {project.name.map((char, index) => (
+                      <span key={index} className="char">
+                        {char}
+                      </span>
+                    ))}
+                  </h2>
+                </div>
+              ) : null}
+              <div className="relative w-[350px] h-[200px] flex justify-center items-center rounded-lg shrink-0">
+                <Image
+                  src={`/images/${project.img4}`}
+                  fill
+                  alt="image"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
             </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/SAAS1.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="flex justify-center items-center flex-1 lg:flex-[1.3] item">
-              <h1 className="text-black text-3xl lg:text-work uppercase tracking-tight">
-                {["S", "a", "a", "S"].map((char, index) => (
-                  <span key={index} className="char">
-                    {char}
-                  </span>
-                ))}
-              </h1>
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/SAAS4.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </Link>
-      <Link href="https://energy-website-sooty.vercel.app/" target="_blank">
-        <motion.div
-          className="relative lg:w-[125%] lg:h-[250px] w-[250%] h-[150px] flex mb-5 overflow-hidden -left-[25%]"
-          id="marquee-3"
-          ref={addToRefs}
-          onMouseEnter={() => setModal({ active: true, index: 0 })}
-          onMouseLeave={() => setModal({ active: false, index: 0 })}
-          initial={{ opacity: 0, y: 75 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="w-full h-full absolute top-[50%] left-0 -translate-y-1/2 flex gap-6 marquee items-center">
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Kreativy3.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="flex justify-center items-center flex-1 lg:flex-[1.3] item">
-              <h1 className="text-black text-3xl lg:text-work uppercase tracking-tight">
-                {["K", "r", "e", "a", "t", "i", "v", "y"].map((char, index) => (
-                  <span key={index} className="char">
-                    {char}
-                  </span>
-                ))}
-              </h1>
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Kreativy1.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Kreativy2.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Kreativy4.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </Link>
-      <Link href="https://energy-website-sooty.vercel.app/" target="_blank">
-        <motion.div
-          className="relative lg:w-[125%] lg:h-[250px] w-[250%] h-[150px] flex mb-5 overflow-hidden -left-[35%] lg:left-0"
-          id="marquee-3"
-          ref={addToRefs}
-          onMouseEnter={() => setModal({ active: true, index: 0 })}
-          onMouseLeave={() => setModal({ active: false, index: 0 })}
-          initial={{ opacity: 0, y: 75 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="w-full h-full absolute top-[50%] left-0 -translate-y-1/2 flex gap-6 marquee items-center">
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow1.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow2.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow3.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="flex justify-center items-center flex-1 lg:flex-[1.3] item">
-              <h1 className="text-black text-3xl lg:text-work uppercase tracking-tight">
-                {["F", "l", "o", "w"].map((char, index) => (
-                  <span key={index} className="char">
-                    {char}
-                  </span>
-                ))}
-              </h1>
-            </div>
-            <div className="relative w-[200px] h-[180px] flex justify-center items-center flex-1 rounded-lg">
-              <Image
-                src="/images/Flow4.png"
-                fill
-                alt="image"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </Link>
+          </motion.div>
+        </Link>
+      ))}
       <Modal modal={modal} />
     </section>
   );
