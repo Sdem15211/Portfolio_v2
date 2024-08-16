@@ -32,6 +32,9 @@ const config: Config = {
       letterSpacing: {
         tight: "-.035em",
       },
+      fontFamily: {
+        menlo: ["Menlo", "sans-serif"],
+      },
     },
   },
   plugins: [],

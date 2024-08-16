@@ -1,6 +1,7 @@
 "use client";
 import { Hero } from "@/sections/Hero";
 import { Projects } from "@/sections/Projects";
+import { Services } from "@/sections/Services";
 import { ReactLenis } from "lenis/react";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <div>
         <Hero />
         <Projects />
+        <Services />
       </div>
     </ReactLenis>
   );

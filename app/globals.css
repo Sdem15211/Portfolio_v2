@@ -7,3 +7,8 @@
     @apply overflow-x-hidden bg-prim;
   }
 }
+
+@font-face {
+  font-family: "Menlo";
+  src: url("../public/fonts/Menlo-Regular.ttf");
+}
