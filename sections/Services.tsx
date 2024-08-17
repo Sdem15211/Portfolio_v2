@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { BackgroundGrid } from "@/components/ui/BackgroundGrid";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
@@ -12,21 +13,36 @@ export const Services = () => {
   });
 
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 1080]);
-  const sm = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const sm = useTransform(scrollYProgress, [0, 1], [0, -400]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -1400]);
   const md = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
-    <section ref={sectionRef} id="services" className="mb-40 scroll-mt-28">
-      <Container>
-        <div className="flex gap-2 items-center">
+    <section ref={sectionRef} id="services" className="relative">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.65 }}
+        viewport={{ margin: "0px 0px -400px 0px" }}
+        transition={{ duration: 4, ease: "easeOut" }}
+        className="sticky top-0"
+      >
+        <BackgroundGrid />
+      </motion.div>
+      <Container className="-mt-[900px]">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          transition={{ type: "spring", bounce: 0.25 }}
+          className="flex gap-2 items-center mb-[500px] sticky"
+        >
           <motion.div style={{ rotate }}>
             <GoNorthStar className="md:size-6 size-4" />
           </motion.div>
           <h2 className="text-mobsubheading uppercase font-regular md:text-mdsubheading">
             Services
           </h2>
-        </div>
+        </motion.div>
         <div className="h-[150vh] w-full relative">
           <motion.div>
             <motion.div
@@ -51,7 +67,7 @@ export const Services = () => {
                   I build custom websites that bring your unique brand identity
                   to life. With smooth animations, high performance and easy
                   navigation, I create sites that look great and keep your
-                  audience engaged. offering both custom-coded and{" "}
+                  audience engaged. Offering both custom-coded and{" "}
                   <span className="underline">Webflow</span> options.
                 </p>
               </div>
@@ -67,7 +83,7 @@ export const Services = () => {
           </motion.div>
           <motion.div
             style={{ y: sm }}
-            className="bg-[#161616] flex flex-col gap-8 p-11 w-[390px] justify-center rounded-3xl absolute shadow-2xl right-0 top-[200px]"
+            className="bg-[#161616] flex flex-col gap-8 p-11 w-[390px] justify-center rounded-3xl absolute shadow-2xl right-0 top-[400px]"
           >
             <div className="w-[300px] h-[200px] relative rounded-3xl self-center z-10">
               <Image
@@ -84,7 +100,7 @@ export const Services = () => {
                 lasting impression. With clean layouts, intuitive navigation,
                 and engaging visuals, I create designs that look great and
                 connect with your audience. Wether you need a fresh design or a
-                complete redesign, i’m here to help.
+                complete redesign, I’m here to help.
               </p>
             </div>
             <div className="absolute inset-0 w-full h-full opacity-25 rounded-3xl z-0">
@@ -130,6 +146,7 @@ export const Services = () => {
             </div>
           </motion.div>
         </div>
+        <div className="h-[600px]" />
       </Container>
     </section>
   );
