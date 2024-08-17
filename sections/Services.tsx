@@ -96,11 +96,11 @@ export const Services = () => {
             <div className="relative z-10">
               <h3 className="text-prim text-[2rem] mb-8">web design</h3>
               <p className="text-prim text-[1rem] leading-6">
-                I design websites that capture your brand’s essence and make a
-                lasting impression. With clean layouts, intuitive navigation,
-                and engaging visuals, I create designs that look great and
-                connect with your audience. Wether you need a fresh design or a
-                complete redesign, I’m here to help.
+                I design websites that capture your brand&apos;s essence and
+                make a lasting impression. With clean layouts, intuitive
+                navigation, and engaging visuals, I create designs that look
+                great and connect with your audience. Wether you need a fresh
+                design or a complete redesign, I&apos;m here to help.
               </p>
             </div>
             <div className="absolute inset-0 w-full h-full opacity-25 rounded-3xl z-0">
@@ -128,11 +128,11 @@ export const Services = () => {
               <div className="relative z-10 w-1/2">
                 <h3 className="text-prim text-[2rem] mb-8">full service</h3>
                 <p className="text-prim text-[1rem] leading-6">
-                  I design websites that capture your brand’s essence and make a
-                  lasting impression. With clean layouts, intuitive navigation,
-                  and engaging visuals, I create designs that look great and
-                  connect with your audience. Wether you need a fresh design or
-                  a complete redesign, i’m here to help.
+                  I design websites that capture your brand&apos;s essence and
+                  make a lasting impression. With clean layouts, intuitive
+                  navigation, and engaging visuals, I create designs that look
+                  great and connect with your audience. Wether you need a fresh
+                  design or a complete redesign, i&apos;m here to help.
                 </p>
               </div>
             </div>
