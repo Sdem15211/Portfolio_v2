@@ -10,7 +10,6 @@ export const Services = () => {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 1080]);
   const sm = useTransform(scrollYProgress, [0, 1], [0, -400]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -1400]);
